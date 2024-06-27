@@ -1,6 +1,29 @@
 {
   "dependencies": {
     "dotenv": "^16.4.5",
+    "express": "^4.19.2",
     "nodemailer": "^6.9.14"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "myweb.github.io",
+  "version": "1.0.0",
+  "main": "script.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/royalghostbepo/myweb.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/royalghostbepo/myweb.github.io/issues"
+  },
+  "homepage": "https://github.com/royalghostbepo/myweb.github.io#readme",
+  "description": ""
 }

@@ -1,8 +1,9 @@
-require('dotenv').config();
-const express = require('express');
-const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
-const cors = require('cors');
+import 'dotenv/config';
+import express from 'express';
+import bodyParser from 'body-parser';
+import nodemailer from 'nodemailer';
+import cors from 'cors';
+import path from 'path';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,7 +14,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 // Serve static files from the "public" directory
-app.use(express.static('public'));
+app.use(express.static('/'));
+
+// Route to serve index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname,  '/index.html'));
+});
 
 // Configure Nodemailer
 const transporter = nodemailer.createTransport({
@@ -29,7 +35,6 @@ app.post('/contact', (req, res) => {
   const { name, email, subject, message } = req.body;
   console.log('Form data received:', { name, email, subject, message });
 
-  // Email options
   const mailOptions = {
     from: email, // Sender address
     to: process.env.EMAIL_USER, // Receiver address
@@ -42,7 +47,6 @@ app.post('/contact', (req, res) => {
           `Message:\n${message}`
   };
 
-  // Send email
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.log('Error sending email:', error);

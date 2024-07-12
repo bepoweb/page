@@ -5,7 +5,7 @@ import cors from 'cors';
 import 'dotenv/config';
 
 const app = express();
-const port = process.env.PORT || 5500;
+const port = process.env.PORT  || 5500 ;
 
 app.use(cors());
 app.use(bodyParser.json());
